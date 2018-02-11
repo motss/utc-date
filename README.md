@@ -1,5 +1,5 @@
 <div align="center" style="text-align: center;">
-  <h1 style="border-bottom: none;">utc-date</h1>
+  <h1 style="border-bottom: none;">@motss/utc-date</h1>
 
   <p>Better greeting message</p>
 </div>
@@ -21,7 +21,7 @@
 [![codacy-badge]][codacy-url]
 [![inch-badge]][inch-url]
 
-> Generate JavaScript&#39;s UTC dates with various offsets
+> Generate JavaScript's UTC dates with various offsets
 
 ## Table of contents
 
@@ -47,7 +47,7 @@
 
 ```sh
 # Install via NPM
-$ npm install --save utc-date
+$ npm install --save @motss/utc-date
 ```
 
 ### Usage
@@ -55,7 +55,7 @@ $ npm install --save utc-date
 #### Node.js
 
 ```js
-const greeting = require('utc-date');
+const greeting = require('@motss/utc-date');
 ```
 
 #### Native ES modules or TypeScript
@@ -63,7 +63,7 @@ const greeting = require('utc-date');
 ```ts
 // @ts-check
 
-import greeting from 'utc-date';
+import greeting from '@motss/utc-date';
 ```
 
 ## API Reference
