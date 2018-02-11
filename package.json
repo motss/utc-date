@@ -2,11 +2,11 @@
   "name": "utc-date",
   "version": "0.0.0",
   "private": true,
-  "description": "Generate JavaScript&#39;s UTC dates with various offsets",
+  "description": "Generate JavaScript's UTC dates with various offsets",
   "keywords": [
-    "utc-date",
     "node",
-    "typescript"
+    "typescript",
+    "utc-date"
   ],
   "homepage": "https://github.com/motss/utc-date",
   "license": "MIT",
@@ -26,13 +26,15 @@
     "check": "npm run lint && npm run nsp",
     "cleanup": "rm -rf gulpfile.js",
     "gulp": "npm run ts && gulp",
-    "lint": "npm run ts && gulp lint && npm run cleanup",
+    "lint": "npm run ts && cross-env NODE_ENV=production gulp lint && npm run cleanup",
     "nsp": "nsp check",
     "prepublishOnly": "npm run check && npm run build",
+    "test": "jest --config ./.jestrc.json",
     "ts": "tsc --target esnext --lib esnext,esnext.asynciterable --module commonjs gulpfile.ts"
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/jest": "^22.1.2",
     "@types/node": "^9.4.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -45,7 +47,9 @@
     "gulp-sequence": "^1.0.0",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.4",
+    "jest": "^22.2.2",
     "nsp": "^3.1.0",
+    "ts-jest": "^22.0.3",
     "tslint": "^5.9.1",
     "tslint-config-airbnb": "^5.5.0",
     "tslint-consistent-codestyle": "^1.11.0",

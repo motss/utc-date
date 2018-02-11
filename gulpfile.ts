@@ -16,6 +16,7 @@ const TMP = '.tmp';
 const DIST = '.';
 const IGNORE_DIR = [
   `${SRC}/demo`,
+  `${SRC}/test*`,
 ];
 const BABELRC = {
   presets: [
@@ -55,8 +56,7 @@ const BABELRC = {
 
 gulp.task('lint', () =>
   gulp.src([
-    `${SRC}/**/*.ts`,
-    `${SRC}/**/*.tsx`,
+    `${SRC}/**/*.ts*`,
   ])
     .pipe(lint({
       configuration: `./tslint${
@@ -104,8 +104,7 @@ gulp.task('copy', () => gulp.src([
 
 gulp.task('watch', () => {
   gulp.watch([
-    `${SRC}/**/*.ts`,
-    `${SRC}/**/*.tsx`,
+    `${SRC}/**/*.ts*`,
   ], ['build']);
 });
 

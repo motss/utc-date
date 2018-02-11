@@ -13,11 +13,11 @@ yarn-error.log*
 
 # folders
 ./test*/
-demo*/
+coverage*/
 node_modules/
 
 # .js files
+*.d.ts*
 *.js
 *.jsx
-*.d.ts*
 gulpfile*.js
