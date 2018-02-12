@@ -110,6 +110,22 @@ describe('utc-date', () => {
     }
   });
 
+  test('utcDate works w/ defined startDate + any offset', async () => {
+    try {
+      const d = await utcDate({
+        startDate: '2020-02-02',
+        offset: {
+          date: -1,
+        },
+      });
+
+      expect(d instanceof Date).toBe(true);
+      expect(d).toEqual(new Date('2020-02-01T00:00:00.000Z'));
+    } catch (e) {
+      throw e;
+    }
+  });
+
   test('utcDate works w/o any params', async () => {
     try {
       const d = await utcDate();

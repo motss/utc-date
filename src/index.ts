@@ -23,7 +23,7 @@ export async function utcDate(opts: UTCDateOpts = {} as UTCDateOpts) {
 }
 
 export function utcDateSync({
-  offset = { year: 0, month: 0, date: 0 },
+  offset,
   startDate,
 }: UTCDateOpts = {} as UTCDateOpts) {
   const isNullishDate = startDate == null;
@@ -32,17 +32,17 @@ export function utcDateSync({
     throw new Error('Param date has an invalid date value');
   }
 
-  const { year, month, date } = offset || { year: 0, month: 0, date: 0 } as UTCDateOffset;
+  const { year = 0, month = 0, date = 0 } = offset || {} as UTCDateOffset;
 
-  if (year != null && Number.isNaN(year)) {
+  if (year != null && Number.isNaN(+year)) {
     throw new Error('Param offset[year] is not a number');
   }
 
-  if (month != null && Number.isNaN(month)) {
+  if (month != null && Number.isNaN(+month)) {
     throw new Error('Param offset[month] is not a number');
   }
 
-  if (date != null && Number.isNaN(date)) {
+  if (date != null && Number.isNaN(+date)) {
     throw new Error('Param offset[date] is not a number');
   }
 
