@@ -183,8 +183,8 @@ This methods works the same as `utcDate([UTCDateOpts])` except that this is the 
 [nodei-url]: https://nodei.co/npm/utc-date
 
 [travis-url]: https://travis-ci.org/motss/utc-date
-[version-url]: https://npmjs.org/package/utc-date
-[downloads-url]: http://www.npmtrends.com/utc-date
+[version-url]: https://www.npmjs.com/package/@motss/utc-date
+[downloads-url]: http://www.npmtrends.com/@motss/utc-date
 [mit-license-url]: https://github.com/motss/utc-date/blob/master/LICENSE
 [nsp-url]: https://nodesecurity.io/orgs/motss/projects/f7a6646b-202f-4b73-ad9e-6f6eacc577de
 [daviddm-url]: https://david-dm.org/motss/utc-date
