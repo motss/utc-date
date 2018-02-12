@@ -5,16 +5,16 @@ export declare interface UTCDateOffset {
   month?: number;
   date?: number;
 }
-export declare interface UTCDateParams {
+export declare interface UTCDateOpts {
   offset?: UTCDateOffset;
-  startDate?: Date | string | number;
+  startDate?: string | number | Date;
 }
 
 export function isValidDate(anyDate: any) {
   return !/^invalid date/i.test(`${new Date(anyDate)}`);
 }
 
-export async function utcDate(opts: UTCDateParams = {} as UTCDateParams) {
+export async function utcDate(opts: UTCDateOpts = {} as UTCDateOpts) {
   try {
     return await utcDateSync(opts);
   } catch (e) {
@@ -25,7 +25,7 @@ export async function utcDate(opts: UTCDateParams = {} as UTCDateParams) {
 export function utcDateSync({
   offset = { year: 0, month: 0, date: 0 },
   startDate,
-}: UTCDateParams = {} as UTCDateParams) {
+}: UTCDateOpts = {} as UTCDateOpts) {
   const isNullishDate = startDate == null;
 
   if (!isNullishDate && !isValidDate(startDate)) {

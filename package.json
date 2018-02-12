@@ -4,9 +4,12 @@
   "private": true,
   "description": "Generate JavaScript's UTC dates with various offsets",
   "keywords": [
+    "date-offset",
     "node",
     "typescript",
-    "utc-date"
+    "utc",
+    "utc-date",
+    "utc-datetime"
   ],
   "homepage": "https://github.com/motss/utc-date",
   "license": "MIT",
