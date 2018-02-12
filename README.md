@@ -35,8 +35,8 @@
       - [Native ES modules or TypeScript](#native-es-modules-or-typescript)
   - [API Reference](#api-reference)
     - [UTCDateOpts](#utcdateopts)
-    - [utcDate([UTCDateOpts])](#utcdateutcdateoptsutc-date-opts-url)
-    - [utcDateSync([UTCDateOpts])](#utcdatesyncutcdateoptsutc-date-opts-url)
+    - [utcDate([UTCDateOpts])](#utcdateutcdateopts)
+    - [utcDateSync([UTCDateOpts])](#utcdatesyncutcdateopts)
   - [License](#license)
 
 ## Pre-requisites
@@ -123,12 +123,12 @@ void async function main() {
     - `date` <[number][number-mdn-url]> Optional offset to adjust the `date`.
 - `startDate` <[string][string-mdn-url]|[number][number-mdn-url]|[Date][date-mdn-url]> Optional starting date. _Defaults to today's date if it is not given._
 
-### utcDate([[UTCDateOpts][utc-date-opts-url]])
+### utcDate([UTCDateOpts])
 
   - `UTCDateOpts` <[UTCDateOpts][utc-date-opts-url]> Optional configuration when returning a [JavaScript Date object][date-mdn-url] using the [UTC][utc-url] timezone.
   - returns: <[Promise][promise-mdn-url]&lt;[string][string-mdn-url]&gt;> Promise which resolves with a [JavaScript Date object][date-mdn-url] using the [UTC][utc-url] timezone.
 
-### utcDateSync([[UTCDateOpts][utc-date-opts-url]])
+### utcDateSync([UTCDateOpts])
 
 This methods works the same as `utcDate([UTCDateOpts])` except that this is the synchronous version.
 
