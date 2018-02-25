@@ -42,7 +42,7 @@ describe('utc-date', () => {
       await utcDate({ startDate: 'invalid-date' });
     } catch (e) {
       expect(e instanceof Error).toBe(true);
-      expect(e.message).toEqual('Param date has an invalid date value');
+      expect(e.message).toEqual('Param opts[startDate] is not a valid date');
     }
   });
 
@@ -53,7 +53,7 @@ describe('utc-date', () => {
       });
     } catch (e) {
       expect(e instanceof Error).toBe(true);
-      expect(e.message).toEqual('Param offset[year] is not a number');
+      expect(e.message).toEqual('Param opts[offset][year] is not a number');
     }
   });
 
@@ -64,18 +64,18 @@ describe('utc-date', () => {
       });
     } catch (e) {
       expect(e instanceof Error).toBe(true);
-      expect(e.message).toEqual('Param offset[month] is not a number');
+      expect(e.message).toEqual('Param opts[offset][month] is not a number');
     }
   });
 
   test('^Param offset[date] is not a number', async () => {
     try {
       await utcDate({
-        offset: { date: NaN },
+        offset: { day: NaN },
       });
     } catch (e) {
       expect(e instanceof Error).toBe(true);
-      expect(e.message).toEqual('Param offset[date] is not a number');
+      expect(e.message).toEqual('Param opts[offset][date] is not a number');
     }
   });
 
@@ -99,7 +99,7 @@ describe('utc-date', () => {
         offset: {
           year: 1,
           month: 2,
-          date: 3,
+          day: 3,
         },
       });
 
@@ -115,7 +115,7 @@ describe('utc-date', () => {
       const d = await utcDate({
         startDate: '2020-02-02',
         offset: {
-          date: -1,
+          day: -1,
         },
       });
 
