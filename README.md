@@ -70,7 +70,7 @@ void async function main() {
     offset: {
       year: 2,
       month: 1,
-      date: 0,
+      day: 0,
     },
   });
   const specifiedUTCDate = await utcDate({
@@ -100,7 +100,7 @@ void async function main() {
     offset: {
       year: 2,
       month: 1,
-      date: 0,
+      day: 0,
     },
   });
   const specifiedUTCDate = await utcDate({
@@ -120,7 +120,7 @@ void async function main() {
  - `offsets` <[Object][object-mdn-url]> Optional offset values when returning a [JavaScript Date object][date-mdn-url] using the [UTC][utc-url] timezone.
     - `year` <[number][number-mdn-url]> Optional offset to adjust the `year`.
     - `month` <[number][number-mdn-url]> Optional offset to adjust the `month`.
-    - `date` <[number][number-mdn-url]> Optional offset to adjust the `date`.
+    - `day` <[number][number-mdn-url]> Optional offset to adjust the `day`.
 - `startDate` <[string][string-mdn-url]|[number][number-mdn-url]|[Date][date-mdn-url]> Optional starting date. _Defaults to today's date if it is not given._
 
 ### utcDate([UTCDateOpts])
