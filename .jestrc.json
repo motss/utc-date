@@ -4,9 +4,7 @@
       "babelConfig": {
         "presets": [
           ["env", {
-            "targets": {
-              "node": "current"
-            },
+            "targets": { "node": "current" },
             "spec": true,
             "modules": false,
             "useBuiltIns": true
@@ -41,7 +39,7 @@
     "<rootDir>/src/"
   ],
   "transform": {
-    "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    "^.+\\.tsx?$": "ts-jest"
   },
   "testMatch": [
     "**/src/test*/**/*.spec.(ts|tsx)"

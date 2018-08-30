@@ -1,55 +1,47 @@
 // @ts-check
 
-export declare interface UTCDateOffset {
+interface UTCDateOffset {
   year?: number;
   month?: number;
   day?: number;
 }
-export declare interface UTCDateOpts {
-  offset?: UTCDateOffset;
-  startDate?: string | number | Date;
-}
+export interface UTCDateParams {
+  startDate?: string|number|Date;
 
-export function isValidDate(anyDate: any) {
-  return !/^invalid date/i.test(`${new Date(anyDate)}`);
+  offset?: UTCDateOffset;
 }
 
 export function utcDateSync({
-  offset,
   startDate,
-}: UTCDateOpts = {} as UTCDateOpts) {
-  const isNullishDate = startDate == null;
+  offset,
+}: UTCDateParams = {} as UTCDateParams): Date {
+  const dated = startDate == null ? new Date() : new Date(startDate);
+  const { year, month, day } = offset || {} as UTCDateOffset;
+  const validatedYear = year == null ? 0 : year;
+  const validatedMonth = month == null ? 0 : month;
+  const validatedDay = day == null ? 0 : day;
 
-  if (!isNullishDate && !isValidDate(startDate)) {
-    throw new Error('Param opts[startDate] is not a valid date');
+  console.log({ validatedDay, validatedMonth, validatedYear });
+
+  if (Number.isNaN(+validatedYear)) {
+    throw new TypeError(`Expected 'year' to be a valid number, but received '${year}'`);
   }
 
-  const { year = 0, month = 0, day = 0 } = offset || {} as UTCDateOffset;
-
-  if (year != null && Number.isNaN(+year)) {
-    throw new Error('Param opts[offset][year] is not a number');
+  if (Number.isNaN(+validatedMonth)) {
+    throw new TypeError(`Expected 'month' to be a valid number, but received '${month}'`);
   }
 
-  if (month != null && Number.isNaN(+month)) {
-    throw new Error('Param opts[offset][month] is not a number');
+  if (Number.isNaN(+validatedDay)) {
+    throw new TypeError(`Expected 'day' to be a valid number, but received '${day}'`);
   }
-
-  if (day != null && Number.isNaN(+day)) {
-    throw new Error('Param opts[offset][date] is not a number');
-  }
-
-  const newDate = isNullishDate
-    ? new Date()
-    : new Date(startDate as string);
 
   return new Date(Date.UTC(
-    newDate.getUTCFullYear() + year,
-    newDate.getUTCMonth() + month,
-    newDate.getUTCDate() + day
-  ));
+    dated.getUTCFullYear() + validatedYear,
+    dated.getUTCMonth() + validatedMonth,
+    dated.getUTCDay() + validatedDay));
 }
 
-export async function utcDate(opts?: UTCDateOpts) {
+export async function utcDate(opts?: UTCDateParams): Promise<Date> {
   return utcDateSync(opts);
 }
 

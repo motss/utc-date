@@ -1,155 +1,93 @@
 // @ts-check
 
-/** Import other modules */
-import {
-  utcDate,
-  utcDateSync,
-} from '../';
+import { utcDate, utcDateSync } from '..';
+import { DESTRUCTION } from 'dns';
 
 describe('utc-date', () => {
-  test('offset is null', async () => {
-    try {
-      const d = await utcDate({ offset: null });
-      const today = new Date();
-      const todayFY = today.getUTCFullYear();
-      const todayM = today.getUTCMonth();
-      const todayD = today.getUTCDate();
+  describe('error', () => {
+    it(`throws when first argument is 'null'`, async () => {
+      try {
+        await utcDate(null!);
+      } catch (e) {
+        expect(e).toStrictEqual(new TypeError(`Cannot destructure property \`startDate\` of 'undefined' or 'null'.`));
+      }
+    });
 
-      expect(d instanceof Date).toBe(true);
-      expect(d).toEqual(new Date(Date.UTC(todayFY, todayM, todayD)));
-    } catch (e) {
-      throw e;
-    }
+    it(`throws when invalid 'year'`, async () => {
+      try {
+        await utcDate({
+          offset: { year: NaN },
+        })
+      } catch (e) {
+        expect(e).toStrictEqual(new TypeError(`Expected 'year' to be a valid number, but received '${NaN}'`));
+      }
+    });
+
+    it(`throws when invalid 'month'`, async () => {
+      try {
+        await utcDate({
+          offset: { month: NaN },
+        })
+      } catch (e) {
+        expect(e).toStrictEqual(new TypeError(`Expected 'month' to be a valid number, but received '${NaN}'`));
+      }
+    });
+
+    it(`throws when invalid 'day'`, async () => {
+      try {
+        await utcDate({
+          offset: { day: NaN },
+        })
+      } catch (e) {
+        expect(e).toStrictEqual(new TypeError(`Expected 'day' to be a valid number, but received '${1}'`));
+      }
+    });
+
   });
 
-  test('startDate is null', async () => {
-    try {
-      const d = await utcDate({ startDate: null });
-      const today = new Date();
-      const todayFY = today.getUTCFullYear();
-      const todayM = today.getUTCMonth();
-      const todayD = today.getUTCDate();
+  describe('ok', () => {
+    it('returns UTC date with any arguments', async () => {
+      try {
+        const d = await utcDate();
 
-      expect(d instanceof Date).toBe(true);
-      expect(d).toEqual(new Date(Date.UTC(todayFY, todayM, todayD)));
-    } catch (e) {
-      throw e;
-    }
-  });
+        expect(d).toStrictEqual(new Date(new Date().toJSON()));
+      } catch (e) {
+        throw e;
+      }
+    });
 
-  test('^Param date has an invalid date value', async () => {
-    try {
-      await utcDate({ startDate: 'invalid-date' });
-    } catch (e) {
-      expect(e instanceof Error).toBe(true);
-      expect(e.message).toEqual('Param opts[startDate] is not a valid date');
-    }
-  });
+    it(`returns UTC date with defined 'startDate'`, async () => {
+      try {
+        const d = await utcDate({ startDate: '2018-03-03' });
 
-  test('^Param offset[year] is not a number', async () => {
-    try {
-      await utcDate({
-        offset: { year: NaN },
-      });
-    } catch (e) {
-      expect(e instanceof Error).toBe(true);
-      expect(e.message).toEqual('Param opts[offset][year] is not a number');
-    }
-  });
+        expect(d).toStrictEqual(new Date(new Date('2018-03-03').toJSON()));
+      } catch (e) {
+        throw e;
+      }
+    });
 
-  test('^Param offset[month] is not a number', async () => {
-    try {
-      await utcDate({
-        offset: { month: NaN },
-      });
-    } catch (e) {
-      expect(e instanceof Error).toBe(true);
-      expect(e.message).toEqual('Param opts[offset][month] is not a number');
-    }
-  });
+    it(`returns UTC date with defined 'offset'`, async () => {
+      try {
+        const dated = new Date();
+        const exp = new Date(Date.UTC(dated.getUTCFullYear() + 1, dated.getUTCMonth() + 2, dated.getUTCDay()));
+        const d = await utcDate({ offset: { year: 1, month: 2 } });
 
-  test('^Param offset[date] is not a number', async () => {
-    try {
-      await utcDate({
-        offset: { day: NaN },
-      });
-    } catch (e) {
-      expect(e instanceof Error).toBe(true);
-      expect(e.message).toEqual('Param opts[offset][date] is not a number');
-    }
-  });
+        expect(d).toStrictEqual(exp);
+      } catch (e) {
+        throw e;
+      }
+    });
 
-  test('utcDate works w/ defined startDate', async () => {
-    try {
-      const d = await utcDate({
-        startDate: '2020-02-02',
-      });
+    it(`returns UTC date with defined 'startDate' and 'offset'`, async () => {
+      try {
+        const d = await utcDate({ startDate: '2018-03-03', offset: { year: 1, month: 2 } });
 
-      expect(d instanceof Date).toBe(true);
-      expect(d).toEqual(new Date('2020-02-02T00:00:00.000Z'));
-    } catch (e) {
-      throw e;
-    }
-  });
+        expect(d).toStrictEqual(new Date(new Date('2019-05-03').toJSON()));
+      } catch (e) {
+        throw e;
+      }
+    });
 
-  test('utcDate works w/ defined startDate + offsets', async () => {
-    try {
-      const d = await utcDate({
-        startDate: '2020-02-02',
-        offset: {
-          year: 1,
-          month: 2,
-          day: 3,
-        },
-      });
-
-      expect(d instanceof Date).toBe(true);
-      expect(d).toEqual(new Date('2021-04-05T00:00:00.000Z'));
-    } catch (e) {
-      throw e;
-    }
-  });
-
-  test('utcDate works w/ defined startDate + any offset', async () => {
-    try {
-      const d = await utcDate({
-        startDate: '2020-02-02',
-        offset: {
-          day: -1,
-        },
-      });
-
-      expect(d instanceof Date).toBe(true);
-      expect(d).toEqual(new Date('2020-02-01T00:00:00.000Z'));
-    } catch (e) {
-      throw e;
-    }
-  });
-
-  test('utcDate works w/o any params', async () => {
-    try {
-      const d = await utcDate();
-      const today = new Date();
-      const todayFY = today.getUTCFullYear();
-      const todayM = today.getUTCMonth();
-      const todayD = today.getUTCDate();
-
-      expect(d instanceof Date).toBe(true);
-      expect(d).toEqual(new Date(Date.UTC(todayFY, todayM, todayD)));
-    } catch (e) {
-      throw e;
-    }
-  });
-
-  test('utcDateSync works w/o any params', () => {
-    const d = utcDateSync();
-    const today = new Date();
-    const todayFY = today.getUTCFullYear();
-    const todayM = today.getUTCMonth();
-    const todayD = today.getUTCDate();
-
-    expect(d instanceof Date).toBe(true);
-    expect(d).toEqual(new Date(Date.UTC(todayFY, todayM, todayD)));
   });
 
 });
