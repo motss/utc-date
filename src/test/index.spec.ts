@@ -1,7 +1,6 @@
 // @ts-check
 
-import { utcDate, utcDateSync } from '..';
-import { DESTRUCTION } from 'dns';
+import { utcDate } from '..';
 
 describe('utc-date', () => {
   describe('error', () => {
@@ -9,7 +8,8 @@ describe('utc-date', () => {
       try {
         await utcDate(null!);
       } catch (e) {
-        expect(e).toStrictEqual(new TypeError(`Cannot destructure property \`startDate\` of 'undefined' or 'null'.`));
+        expect(e).toStrictEqual(
+          new TypeError(`Cannot destructure property \`startDate\` of 'undefined' or 'null'.`));
       }
     });
 
@@ -19,7 +19,8 @@ describe('utc-date', () => {
           offset: { year: NaN },
         })
       } catch (e) {
-        expect(e).toStrictEqual(new TypeError(`Expected 'year' to be a valid number, but received '${NaN}'`));
+        expect(e).toStrictEqual(
+          new TypeError(`Expected 'year' to be a valid number, but received '${NaN}'`));
       }
     });
 
@@ -29,7 +30,8 @@ describe('utc-date', () => {
           offset: { month: NaN },
         })
       } catch (e) {
-        expect(e).toStrictEqual(new TypeError(`Expected 'month' to be a valid number, but received '${NaN}'`));
+        expect(e).toStrictEqual(
+          new TypeError(`Expected 'month' to be a valid number, but received '${NaN}'`));
       }
     });
 
@@ -39,7 +41,8 @@ describe('utc-date', () => {
           offset: { day: NaN },
         })
       } catch (e) {
-        expect(e).toStrictEqual(new TypeError(`Expected 'day' to be a valid number, but received '${1}'`));
+        expect(e).toStrictEqual(
+          new TypeError(`Expected 'day' to be a valid number, but received '${NaN}'`));
       }
     });
 
@@ -50,7 +53,7 @@ describe('utc-date', () => {
       try {
         const d = await utcDate();
 
-        expect(d).toStrictEqual(new Date(new Date().toJSON()));
+        expect(d).toStrictEqual(new Date(new Date().toJSON().replace(/^(.+)T.+/i, '$1')));
       } catch (e) {
         throw e;
       }
@@ -69,7 +72,8 @@ describe('utc-date', () => {
     it(`returns UTC date with defined 'offset'`, async () => {
       try {
         const dated = new Date();
-        const exp = new Date(Date.UTC(dated.getUTCFullYear() + 1, dated.getUTCMonth() + 2, dated.getUTCDay()));
+        const exp = new Date(Date.UTC(
+          dated.getUTCFullYear() + 1, dated.getUTCMonth() + 2, dated.getUTCDate()));
         const d = await utcDate({ offset: { year: 1, month: 2 } });
 
         expect(d).toStrictEqual(exp);

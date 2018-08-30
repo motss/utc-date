@@ -21,8 +21,6 @@ export function utcDateSync({
   const validatedMonth = month == null ? 0 : month;
   const validatedDay = day == null ? 0 : day;
 
-  console.log({ validatedDay, validatedMonth, validatedYear });
-
   if (Number.isNaN(+validatedYear)) {
     throw new TypeError(`Expected 'year' to be a valid number, but received '${year}'`);
   }
@@ -38,7 +36,7 @@ export function utcDateSync({
   return new Date(Date.UTC(
     dated.getUTCFullYear() + validatedYear,
     dated.getUTCMonth() + validatedMonth,
-    dated.getUTCDay() + validatedDay));
+    dated.getUTCDate() + validatedDay));
 }
 
 export async function utcDate(opts?: UTCDateParams): Promise<Date> {
