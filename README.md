@@ -1,5 +1,5 @@
 <div align="center" style="text-align: center;">
-  <h1 style="border-bottom: none;">@motss/utc-date</h1>
+  <h1 style="border-bottom: none;">utc-date</h1>
 
   <p>Generate JavaScript's UTC dates with various offsets</p>
 </div>
@@ -40,6 +40,7 @@
   - [UTCDateParams](#utcdateparams)
   - [utcDate([UTCDateParams])](#utcdateutcdateparams)
   - [utcDateSync([UTCDateParams])](#utcdatesyncutcdateparams)
+- [Related works](#related-works)
 - [License](#license)
 
 ## Pre-requisites
@@ -135,6 +136,10 @@ void async function main() {
 
 This methods works the same as `utcDate([UTCDateParams])` except that this is the synchronous version.
 
+## Related works
+
+- [utc-time][utc-time-url] - Manipulate UTC Time with ease in JavaScript
+
 ## License
 
 [MIT License](https://motss.mit-license.org/) © Rong Sen Ng
@@ -145,6 +150,7 @@ This methods works the same as `utcDate([UTCDateParams])` except that this is th
 [npm-url]: https://www.npmjs.com
 [node-releases-url]: https://nodejs.org/en/download/releases
 [utc-url]: https://en.wikipedia.org/wiki/Coordinated_Universal_Time
+[utc-time-url]: https://github.com/motss/utc-time
 
 [utc-date-opts-url]: #utcdateparams
 
