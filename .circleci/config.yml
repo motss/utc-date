@@ -31,10 +31,10 @@ jobs:
           command: npm i -g npm@latest --quiet
       - run:
           name: Install dependencies
-          command: npm ci
+          command: npm ci --quiet
       - run:
           name: Lint
-          command: npm runt lint
+          command: npm run lint
       - run:
           name: Test
           command: npm t
