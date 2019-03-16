@@ -2,10 +2,16 @@ language: node_js
 dist: trusty
 node_js:
   - v8
-  - v9
   - v10
+cache:
+  directories:
+    - node_modules
+before_install:
+  - npm i -g npm@latest
+install:
+  - npm ci --quiet
 before_script:
-  npm install -g npm@latest coveralls codecov --quiet
+  - npm install -g coveralls codecov --quiet
 script:
   - npm run lint
   - npm t

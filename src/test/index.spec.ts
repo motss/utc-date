@@ -1,5 +1,3 @@
-// @ts-check
-
 import { utcDate } from '..';
 
 describe('utc-date', () => {
@@ -15,9 +13,7 @@ describe('utc-date', () => {
 
     it(`throws when invalid 'year'`, async () => {
       try {
-        await utcDate({
-          offset: { year: NaN },
-        })
+        await utcDate(null!, { year: NaN });
       } catch (e) {
         expect(e).toStrictEqual(
           new TypeError(`Expected 'year' to be a valid number, but received '${NaN}'`));
@@ -26,9 +22,7 @@ describe('utc-date', () => {
 
     it(`throws when invalid 'month'`, async () => {
       try {
-        await utcDate({
-          offset: { month: NaN },
-        })
+        await utcDate(null!, { month: NaN });
       } catch (e) {
         expect(e).toStrictEqual(
           new TypeError(`Expected 'month' to be a valid number, but received '${NaN}'`));
@@ -37,9 +31,7 @@ describe('utc-date', () => {
 
     it(`throws when invalid 'day'`, async () => {
       try {
-        await utcDate({
-          offset: { day: NaN },
-        })
+        await utcDate(null!, { day: NaN });
       } catch (e) {
         expect(e).toStrictEqual(
           new TypeError(`Expected 'day' to be a valid number, but received '${NaN}'`));
@@ -50,46 +42,30 @@ describe('utc-date', () => {
 
   describe('ok', () => {
     it('returns UTC date with any arguments', async () => {
-      try {
-        const d = await utcDate();
+      const d = await utcDate();
 
-        expect(d).toStrictEqual(new Date(new Date().toJSON().replace(/^(.+)T.+/i, '$1')));
-      } catch (e) {
-        throw e;
-      }
+      expect(d).toStrictEqual(new Date(new Date().toJSON().replace(/^(.+)T.+/i, '$1')));
     });
 
     it(`returns UTC date with defined 'startDate'`, async () => {
-      try {
-        const d = await utcDate({ startDate: '2018-03-03' });
+      const d = await utcDate('2018-03-03');
 
-        expect(d).toStrictEqual(new Date(new Date('2018-03-03').toJSON()));
-      } catch (e) {
-        throw e;
-      }
+      expect(d).toStrictEqual(new Date(new Date('2018-03-03').toJSON()));
     });
 
     it(`returns UTC date with defined 'offset'`, async () => {
-      try {
-        const dated = new Date();
-        const exp = new Date(Date.UTC(
-          dated.getUTCFullYear() + 1, dated.getUTCMonth() + 2, dated.getUTCDate()));
-        const d = await utcDate({ offset: { year: 1, month: 2 } });
+      const dated = new Date();
+      const exp = new Date(Date.UTC(
+        dated.getUTCFullYear() + 1, dated.getUTCMonth() + 2, dated.getUTCDate()));
+      const d = await utcDate(null!, { year: 1, month: 2 });
 
-        expect(d).toStrictEqual(exp);
-      } catch (e) {
-        throw e;
-      }
+      expect(d).toStrictEqual(exp);
     });
 
     it(`returns UTC date with defined 'startDate' and 'offset'`, async () => {
-      try {
-        const d = await utcDate({ startDate: '2018-03-03', offset: { year: 1, month: 2 } });
+      const d = await utcDate('2018-03-03', { year: 1, month: 2 });
 
-        expect(d).toStrictEqual(new Date(new Date('2019-05-03').toJSON()));
-      } catch (e) {
-        throw e;
-      }
+      expect(d).toStrictEqual(new Date(new Date('2019-05-03').toJSON()));
     });
 
   });
