@@ -37,6 +37,9 @@
 - [Usage](#usage)
   - [TypeScript or ES Modules](#typescript-or-es-modules)
   - [Node.js](#nodejs)
+  - [Browser](#browser)
+    - [ES Modules](#es-modules)
+    - [IIFE](#iife)
 - [API Reference](#api-reference)
   - [UTCDateParams](#utcdateparams)
   - [utcDate([UTCDateParams])](#utcdateutcdateparams)
@@ -114,6 +117,33 @@ void async function main() {
   assert(defaultUTCDateWithOffsets, new Date('2022-03-02T00:00:00.000Z')); // OK
   assert(specifiedUTCDate, new Date('2030-03-02T00:00:00.000Z')); // OK
 }();
+```
+
+### Browser
+
+#### ES Modules
+
+```html
+<script type="module">
+  import { utcDate } from 'https://unpkg.com/@motss/utc-date@latest/dist/utc-date.js';
+
+  utcDate()
+    .then(console.log)
+    .catch(console.error);
+</script>
+```
+
+#### IIFE
+
+```html
+<script src="https://unpkg.com/@motss/utc-date@latest/dist/utc-date.iife.js"></script>
+<script>
+  const { utcDate } = window.UTCDate;
+
+  utcDate()
+    .then(console.log)
+    .catch(console.error);
+</script>
 ```
 
 ## API Reference
