@@ -55,7 +55,7 @@
 
 ```sh
 # Install via NPM
-$ npm install --save utc-date
+$ npm install --save @motss/utc-date
 ```
 
 ## Usage
@@ -66,7 +66,7 @@ $ npm install --save utc-date
 import {
   utcDate,
   // utcDateSync,
-} from 'utc-date';
+} from '@motss/utc-date';
 
 void async function main() {
   /** NOTE: Assuming today's date is '2020-02-02', */
@@ -94,7 +94,7 @@ void async function main() {
 const {
   utcDate,
   // utcDateSync,
-} = require('utc-date');
+} = require('@motss/utc-date');
 
 void async function main() {
   /** NOTE: Assuming today's date is '2020-02-02', */
@@ -168,14 +168,14 @@ This methods works the same as `utcDate([UTCDateParams])` except that this is th
 <!-- Badges -->
 [follow-me-badge]: https://flat.badgen.net/twitter/follow/igarshmyb?icon=twitter
 
-[version-badge]: https://flat.badgen.net/npm/v/utc-date?icon=npm
-[node-version-badge]: https://flat.badgen.net/npm/node/utc-date
-[mit-license-badge]: https://flat.badgen.net/npm/license/utc-date
+[version-badge]: https://flat.badgen.net/npm/v/@motss/utc-date?icon=npm
+[node-version-badge]: https://flat.badgen.net/npm/node/@motss/utc-date
+[mit-license-badge]: https://flat.badgen.net/npm/license/@motss/utc-date
 
-[downloads-badge]: https://flat.badgen.net/npm/dm/utc-date
-[total-downloads-badge]: https://flat.badgen.net/npm/dt/utc-date?label=total%20downloads
-[packagephobia-badge]: https://flat.badgen.net/packagephobia/install/utc-date
-[bundlephobia-badge]: https://flat.badgen.net/bundlephobia/minzip/utc-date
+[downloads-badge]: https://flat.badgen.net/npm/dm/@motss/utc-date
+[total-downloads-badge]: https://flat.badgen.net/npm/dt/@motss/utc-date?label=total%20downloads
+[packagephobia-badge]: https://flat.badgen.net/packagephobia/install/@motss/utc-date
+[bundlephobia-badge]: https://flat.badgen.net/bundlephobia/minzip/@motss/utc-date
 
 [travis-badge]: https://flat.badgen.net/travis/motss/utc-date?icon=travis
 [circleci-badge]: https://flat.badgen.net/circleci/github/motss/utc-date?icon=circleci
@@ -190,13 +190,13 @@ This methods works the same as `utcDate([UTCDateParams])` except that this is th
 <!-- Links -->
 [follow-me-url]: https://twitter.com/igarshmyb?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=motss/utc-date
 
-[version-url]: https://www.npmjs.com/package/utc-date
+[version-url]: https://www.npmjs.com/package/@motss/utc-date
 [node-version-url]: https://nodejs.org/en/download
 [mit-license-url]: https://github.com/motss/utc-date/blob/master/LICENSE
 
-[downloads-url]: http://www.npmtrends.com/utc-date
-[packagephobia-url]: https://packagephobia.now.sh/result?p=utc-date
-[bundlephobia-url]: https://bundlephobia.com/result?p=utc-date
+[downloads-url]: http://www.npmtrends.com/@motss/utc-date
+[packagephobia-url]: https://packagephobia.now.sh/result?p=%40motss%2Futc-date
+[bundlephobia-url]: https://bundlephobia.com/result?p=@motss/utc-date
 
 [travis-url]: https://travis-ci.org/motss/utc-date
 [circleci-url]: https://circleci.com/gh/motss/utc-date/tree/master
