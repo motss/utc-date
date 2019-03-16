@@ -1,6 +1,6 @@
 {
   "name": "utc-date",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Generate JavaScript's UTC dates with various offsets",
   "keywords": [
     "date",
