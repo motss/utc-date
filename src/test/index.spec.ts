@@ -13,7 +13,7 @@ describe('utc-date', () => {
 
     it(`throws when invalid 'year'`, async () => {
       try {
-        await utcDate(null!, { year: NaN });
+        await utcDate({ offset: { year: NaN } });
       } catch (e) {
         expect(e).toStrictEqual(
           new TypeError(`Expected 'year' to be a valid number, but received '${NaN}'`));
@@ -22,7 +22,7 @@ describe('utc-date', () => {
 
     it(`throws when invalid 'month'`, async () => {
       try {
-        await utcDate(null!, { month: NaN });
+        await utcDate({ offset: { month: NaN } });
       } catch (e) {
         expect(e).toStrictEqual(
           new TypeError(`Expected 'month' to be a valid number, but received '${NaN}'`));
@@ -31,7 +31,7 @@ describe('utc-date', () => {
 
     it(`throws when invalid 'day'`, async () => {
       try {
-        await utcDate(null!, { day: NaN });
+        await utcDate({ offset: { day: NaN } });
       } catch (e) {
         expect(e).toStrictEqual(
           new TypeError(`Expected 'day' to be a valid number, but received '${NaN}'`));
@@ -48,7 +48,7 @@ describe('utc-date', () => {
     });
 
     it(`returns UTC date with defined 'startDate'`, async () => {
-      const d = await utcDate('2018-03-03');
+      const d = await utcDate({ startDate: '2018-03-03' });
 
       expect(d).toStrictEqual(new Date(new Date('2018-03-03').toJSON()));
     });
@@ -57,13 +57,13 @@ describe('utc-date', () => {
       const dated = new Date();
       const exp = new Date(Date.UTC(
         dated.getUTCFullYear() + 1, dated.getUTCMonth() + 2, dated.getUTCDate()));
-      const d = await utcDate(null!, { year: 1, month: 2 });
+      const d = await utcDate({ offset: { year: 1, month: 2 } });
 
       expect(d).toStrictEqual(exp);
     });
 
     it(`returns UTC date with defined 'startDate' and 'offset'`, async () => {
-      const d = await utcDate('2018-03-03', { year: 1, month: 2 });
+      const d = await utcDate({ startDate: '2018-03-03', offset: { year: 1, month: 2 } });
 
       expect(d).toStrictEqual(new Date(new Date('2019-05-03').toJSON()));
     });

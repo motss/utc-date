@@ -6,6 +6,8 @@
 
 <hr />
 
+[![Follow me][follow-me-badge]][follow-me-url]
+
 [![Version][version-badge]][version-url]
 [![Node version][node-version-badge]][node-version-url]
 [![MIT License][mit-license-badge]][mit-license-url]
@@ -27,15 +29,14 @@
 
 > Returns a [JavaScript date object][date-mdn-url] using the [UTC][utc-url] timezone with optional offsets to adjust the `year`, `month`, or `date`.
 
-## Table of contents
+## Table of contents <!-- omit in toc -->
 
-- [Table of contents](#table-of-contents)
 - [Pre-requisites](#pre-requisites)
 - [Setup](#setup)
-  - [Install](#install)
-  - [Usage](#usage)
-    - [Node.js](#nodejs)
-    - [Native ES modules or TypeScript](#native-es-modules-or-typescript)
+- [Install](#install)
+- [Usage](#usage)
+  - [TypeScript or ES Modules](#typescript-or-es-modules)
+  - [Node.js](#nodejs)
 - [API Reference](#api-reference)
   - [UTCDateParams](#utcdateparams)
   - [utcDate([UTCDateParams])](#utcdateutcdateparams)
@@ -50,52 +51,22 @@
 
 ## Setup
 
-### Install
+## Install
 
 ```sh
 # Install via NPM
-$ npm install --save @motss/utc-date
+$ npm install --save utc-date
 ```
 
-### Usage
+## Usage
 
-#### Node.js
-
-```js
-const {
-  utcDate,
-  // utcDateSync,
-} = require('@motss/utc-date');
-
-void async function main() {
-  /** NOTE: Assuming today's date is '2020-02-02', */
-  const defaultUTCDate = await utcDate(); // utcDateSync();
-  const defaultUTCDateWithOffsets = await utcDate({
-    offset: {
-      year: 2,
-      month: 1,
-      day: 0,
-    },
-  });
-  const specifiedUTCDate = await utcDate({
-    startDate: '2030-03-02',
-  });
-
-  assert(defaultUTCDate, new Date('2020-02-02T00:00:00.000Z')); // OK
-  assert(defaultUTCDateWithOffsets, new Date('2022-03-02T00:00:00.000Z')); // OK
-  assert(specifiedUTCDate, new Date('2030-03-02T00:00:00.000Z')); // OK
-}();
-```
-
-#### Native ES modules or TypeScript
+### TypeScript or ES Modules
 
 ```ts
-// @ts-check
-
 import {
   utcDate,
   // utcDateSync,
-} from '@motss/utc-date';
+} from 'utc-date';
 
 void async function main() {
   /** NOTE: Assuming today's date is '2020-02-02', */
@@ -111,6 +82,34 @@ void async function main() {
     startDate: '2030-03-02',
   });
   
+  assert(defaultUTCDate, new Date('2020-02-02T00:00:00.000Z')); // OK
+  assert(defaultUTCDateWithOffsets, new Date('2022-03-02T00:00:00.000Z')); // OK
+  assert(specifiedUTCDate, new Date('2030-03-02T00:00:00.000Z')); // OK
+}();
+```
+
+### Node.js
+
+```js
+const {
+  utcDate,
+  // utcDateSync,
+} = require('utc-date');
+
+void async function main() {
+  /** NOTE: Assuming today's date is '2020-02-02', */
+  const defaultUTCDate = await utcDate(); // utcDateSync();
+  const defaultUTCDateWithOffsets = await utcDate({
+    offset: {
+      year: 2,
+      month: 1,
+      day: 0,
+    },
+  });
+  const specifiedUTCDate = await utcDate({
+    startDate: '2030-03-02',
+  });
+
   assert(defaultUTCDate, new Date('2020-02-02T00:00:00.000Z')); // OK
   assert(defaultUTCDateWithOffsets, new Date('2022-03-02T00:00:00.000Z')); // OK
   assert(specifiedUTCDate, new Date('2030-03-02T00:00:00.000Z')); // OK
@@ -167,19 +166,21 @@ This methods works the same as `utcDate([UTCDateParams])` except that this is th
 [string-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
 <!-- Badges -->
-[version-badge]: https://flat.badgen.net/npm/v/@motss/utc-date
-[node-version-badge]: https://flat.badgen.net/npm/node/@motss/utc-date
-[mit-license-badge]: https://flat.badgen.net/npm/license/@motss/utc-date
+[follow-me-badge]: https://flat.badgen.net/twitter/follow/igarshmyb?icon=twitter
 
-[downloads-badge]: https://flat.badgen.net/npm/dm/@motss/utc-date
-[total-downloads-badge]: https://flat.badgen.net/npm/dt/@motss/utc-date?label=total%20downloads
-[packagephobia-badge]: https://flat.badgen.net/packagephobia/install/@motss/utc-date
-[bundlephobia-badge]: https://flat.badgen.net/bundlephobia/minzip/@motss/utc-date
+[version-badge]: https://flat.badgen.net/npm/v/utc-date?icon=npm
+[node-version-badge]: https://flat.badgen.net/npm/node/utc-date
+[mit-license-badge]: https://flat.badgen.net/npm/license/utc-date
 
-[travis-badge]: https://flat.badgen.net/travis/motss/utc-date
-[circleci-badge]: https://flat.badgen.net/circleci/github/motss/utc-date
+[downloads-badge]: https://flat.badgen.net/npm/dm/utc-date
+[total-downloads-badge]: https://flat.badgen.net/npm/dt/utc-date?label=total%20downloads
+[packagephobia-badge]: https://flat.badgen.net/packagephobia/install/utc-date
+[bundlephobia-badge]: https://flat.badgen.net/bundlephobia/minzip/utc-date
+
+[travis-badge]: https://flat.badgen.net/travis/motss/utc-date?icon=travis
+[circleci-badge]: https://flat.badgen.net/circleci/github/motss/utc-date?icon=circleci
 [daviddm-badge]: https://flat.badgen.net/david/dep/motss/utc-date
-[codecov-badge]: https://flat.badgen.net/codecov/c/github/motss/utc-date?label=codecov
+[codecov-badge]: https://flat.badgen.net/codecov/c/github/motss/utc-date?label=codecov&icon=codecov
 [coveralls-badge]: https://flat.badgen.net/coveralls/c/github/motss/utc-date?label=coveralls
 
 [codebeat-badge]: https://codebeat.co/badges/1ed02b65-dca8-45a5-8719-cdead763a617?style=flat-square
@@ -187,13 +188,15 @@ This methods works the same as `utcDate([UTCDateParams])` except that this is th
 [coc-badge]: https://flat.badgen.net/badge/code%20of/conduct/pink
 
 <!-- Links -->
-[version-url]: https://www.npmjs.com/package/@motss/utc-date
+[follow-me-url]: https://twitter.com/igarshmyb?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=motss/utc-date
+
+[version-url]: https://www.npmjs.com/package/utc-date
 [node-version-url]: https://nodejs.org/en/download
 [mit-license-url]: https://github.com/motss/utc-date/blob/master/LICENSE
 
-[downloads-url]: http://www.npmtrends.com/@motss/utc-date
-[packagephobia-url]: https://packagephobia.now.sh/result?p=%40motss%2Futc-date
-[bundlephobia-url]: https://bundlephobia.com/result?p=@motss/utc-date
+[downloads-url]: http://www.npmtrends.com/utc-date
+[packagephobia-url]: https://packagephobia.now.sh/result?p=utc-date
+[bundlephobia-url]: https://bundlephobia.com/result?p=utc-date
 
 [travis-url]: https://travis-ci.org/motss/utc-date
 [circleci-url]: https://circleci.com/gh/motss/utc-date/tree/master

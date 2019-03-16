@@ -1,11 +1,17 @@
-type StartDate = string|number|Date;
 interface UTCDateOffset {
   year?: number;
   month?: number;
   day?: number;
 }
+interface UTCDateParams {
+  startDate?: string|number|Date;
+  offset?: UTCDateOffset;
+}
 
-export function utcDateSync(startDate?: StartDate, offset?: UTCDateOffset): Date {
+export function utcDateSync({
+  startDate,
+  offset,
+}: UTCDateParams = {}): Date {
   const dated = null == startDate ? new Date() : new Date(startDate);
   const { year, month, day }: UTCDateOffset = offset || {};
   const validatedYear = +(null == year ? 0 : year);
@@ -30,8 +36,8 @@ export function utcDateSync(startDate?: StartDate, offset?: UTCDateOffset): Date
     dated.getUTCDate() + validatedDay));
 }
 
-export async function utcDate(startDate?: StartDate, offset?: UTCDateOffset): Promise<Date> {
-  return utcDateSync(startDate, offset);
+export async function utcDate(options?: UTCDateParams): Promise<Date> {
+  return utcDateSync(options);
 }
 
 export default utcDate;

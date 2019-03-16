@@ -1,5 +1,5 @@
 {
-  "name": "@motss/utc-date",
+  "name": "utc-date",
   "version": "0.3.0",
   "description": "Generate JavaScript's UTC dates with various offsets",
   "keywords": [
