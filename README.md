@@ -17,7 +17,6 @@
 [![Packagephobia][packagephobia-badge]][packagephobia-url]
 [![Bundlephobia][bundlephobia-badge]][bundlephobia-url]
 
-[![Build Status][travis-badge]][travis-url]
 [![CircleCI][circleci-badge]][circleci-url]
 [![Dependency Status][daviddm-badge]][daviddm-url]
 [![codecov][codecov-badge]][codecov-url]
@@ -207,7 +206,6 @@ This methods works the same as `utcDate([UTCDateParams])` except that this is th
 [packagephobia-badge]: https://flat.badgen.net/packagephobia/install/@motss/utc-date
 [bundlephobia-badge]: https://flat.badgen.net/bundlephobia/minzip/@motss/utc-date
 
-[travis-badge]: https://flat.badgen.net/travis/motss/utc-date?icon=travis
 [circleci-badge]: https://flat.badgen.net/circleci/github/motss/utc-date?icon=circleci
 [daviddm-badge]: https://flat.badgen.net/david/dep/motss/utc-date
 [codecov-badge]: https://flat.badgen.net/codecov/c/github/motss/utc-date?label=codecov&icon=codecov
@@ -228,7 +226,6 @@ This methods works the same as `utcDate([UTCDateParams])` except that this is th
 [packagephobia-url]: https://packagephobia.now.sh/result?p=%40motss%2Futc-date
 [bundlephobia-url]: https://bundlephobia.com/result?p=@motss/utc-date
 
-[travis-url]: https://travis-ci.org/motss/utc-date
 [circleci-url]: https://circleci.com/gh/motss/utc-date/tree/master
 [daviddm-url]: https://david-dm.org/motss/utc-date
 [codecov-url]: https://codecov.io/gh/motss/utc-date
