@@ -1,3 +1,5 @@
+🚨 No longer maintained. Moved to [@reallyland/node_mod](https://github.com/reallyland/node_mod). 🚨
+
 <div align="center" style="text-align: center;">
   <h1 style="border-bottom: none;">utc-date</h1>
 
@@ -32,21 +34,21 @@
 
 ## Table of contents <!-- omit in toc -->
 
-- [Pre-requisites](#pre-requisites)
-- [Setup](#setup)
-- [Install](#install)
-- [Usage](#usage)
-  - [TypeScript or ES Modules](#typescript-or-es-modules)
-  - [Node.js](#nodejs)
-  - [Browser](#browser)
-    - [ES Modules](#es-modules)
-    - [IIFE](#iife)
-- [API Reference](#api-reference)
-  - [UTCDateParams](#utcdateparams)
-  - [utcDate([UTCDateParams])](#utcdateutcdateparams)
-  - [utcDateSync([UTCDateParams])](#utcdatesyncutcdateparams)
-- [Related works](#related-works)
-- [License](#license)
+- [Pre-requisites](#Pre-requisites)
+- [Setup](#Setup)
+- [Install](#Install)
+- [Usage](#Usage)
+  - [TypeScript or ES Modules](#TypeScript-or-ES-Modules)
+  - [Node.js](#Nodejs)
+  - [Browser](#Browser)
+    - [ES Modules](#ES-Modules)
+    - [IIFE](#IIFE)
+- [API Reference](#API-Reference)
+  - [UTCDateParams](#UTCDateParams)
+  - [utcDate([UTCDateParams])](#utcDateUTCDateParams)
+  - [utcDateSync([UTCDateParams])](#utcDateSyncUTCDateParams)
+- [Related works](#Related-works)
+- [License](#License)
 
 ## Pre-requisites
 
